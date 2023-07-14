@@ -23,3 +23,7 @@ rule DllInjection {
      all of them
 }
 ```
+
+```c++
+OpenProcess -> VirtualAllocEx -> WriteProcessMemory -> CreateRemoteThread
+```
