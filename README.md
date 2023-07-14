@@ -24,6 +24,6 @@ rule DllInjection {
 }
 ```
 
-```c++
+```c#
 remoteBuffer = VirtualAllocEx(processHandle, NULL, sizeof(malicious_dll), MEM_COMMIT, PAGE_READWRITE);
 ```
