@@ -8,11 +8,11 @@ rule DllInjection {
      $remote_01 = "NtCreateThreadEx"
    condition:
      uint16(0) == 0x5a4d and
-     pe.imports("kernel32.dll", "OpenProcess") and/or
+     pe.imports("kernel32.dll", "OpenProcess") and
      pe.imports("kernel32.dll", "VirtualAllocEx") and
-     pe.imports("kernel32.dll","WriteProcessMemory") and/or
+     pe.imports("kernel32.dll","WriteProcessMemory") and
      pe.imports("kernel32.dll", "LoadLibrary") and
      pe.imports("kernel32.dll", "GetProcAddress") and
-     pe.imports("kernel32.dll","CreateRemoteThread") and/or
+     pe.imports("kernel32.dll","CreateRemoteThread") and
      all of them
 }
