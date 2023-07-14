@@ -1,7 +1,7 @@
 rule BoundSheet_XLM_Macro 
 {
   meta: 
-        author = "estr3llas"
+        author = "spyw4re"
         note = "Rule to detect presence of hidden sheets in .xls/.xlsx files" 
         date = "25-05-2023"
   strings:
