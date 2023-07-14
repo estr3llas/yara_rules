@@ -4,19 +4,22 @@ some of the yara rules i've made for malware i've analysed over my career <br />
 feel free to download and use in your own environment
 
 ```yara
-rule silent_banker : banker
-{
-    meta:
-        description = "This is just an example"
-        threat_level = 3
-        in_the_wild = true
+import "pe"
 
-    strings:
-        $a = {6A 40 68 00 30 00 00 6A 14 8D 91}
-        $b = {8D 4D B0 2B C1 83 C0 27 99 6A 4E 59 F7 F9}
-        $c = "UVODFRYSIHLNWPEJXQZAKCBGMT"
-
-    condition:
-        $a or $b or $c
+rule DllInjection {
+   meta:
+     description = "Rule to detect Dll Injection in general"
+   strings:
+     $load_01 = "LoadLibraryA"
+     $remote_01 = "NtCreateThreadEx"
+   condition:
+     uint16(0) == 0x5a4d and
+     pe.imports("kernel32.dll", "OpenProcess") and/or
+     pe.imports("kernel32.dll", "VirtualAllocEx") and
+     pe.imports("kernel32.dll","WriteProcessMemory") and/or
+     pe.imports("kernel32.dll", "LoadLibrary") and
+     pe.imports("kernel32.dll", "GetProcAddress") and
+     pe.imports("kernel32.dll","CreateRemoteThread") and/or
+     all of them
 }
 ```
