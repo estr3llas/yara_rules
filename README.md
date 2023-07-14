@@ -25,5 +25,5 @@ rule DllInjection {
 ```
 
 ```c++
-OpenProcess -> VirtualAllocEx -> WriteProcessMemory -> CreateRemoteThread
+remoteBuffer = VirtualAllocEx(processHandle, NULL, sizeof(malicious_dll), MEM_COMMIT, PAGE_READWRITE);
 ```
