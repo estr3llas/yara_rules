@@ -1,5 +1,3 @@
-import "pe"
-
 rule bruteratelc4 {
     meta:
         author = "spyw4re"
