@@ -2,7 +2,7 @@ import "pe"
 
 rule pe_no_import_table {
     meta:
-        author = "spyw4re"
+        author = "estrellas"
         description = "A rule to detect .exes who doesnt have any imports"
         date = "2023-10-05"
 
